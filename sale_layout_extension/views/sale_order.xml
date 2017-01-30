@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="sale_layout_extension_sale_order_form">
+            <field name="name">sale_layout_extension.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Other Information']" position="after">
+                    <page string="Section">
+                        <field name="sale_layout_cat_ids">
+                            <tree string="Section" editable="top">
+                                <field name="name"/>
+                                <field name="subtotal"/>
+                                <field name="separator"/>
+                                <field name="pagebreak"/>
+                                <field name="sequence"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sale_layout_extension_sale_order_form2">
+            <field name="name">sale_layout_extension.sale.order.form2</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_layout.view_order_form_inherit_1"/>
+            <field name="arch" type="xml">
+                <!-- Add order id in lines view > needed for domain -->
+                <xpath expr="//field[@name='sale_layout_cat_id']" position="before">
+                    <field name="order_id" invisible="1"/>
+                </xpath>
+                <!-- Add default order id for lines > needed for domain -->
+                <field name="order_line" position="attributes">
+                    <attribute name="context">{'default_order_id': id}</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
