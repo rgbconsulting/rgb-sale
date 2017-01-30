@@ -1,7 +1,7 @@
 Delivery Sale Cost
 ==================
 
-This module fixes the standard price, the calculated costs and margins in Sales Orders.
+This module fixes the standard price and the calculated costs and margins in Sales Orders.
 
 Credits
 =======
