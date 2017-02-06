@@ -21,4 +21,5 @@ class SaleLayout(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
+    order_id = fields.Many2one(states={'draft': [('required', False)]})
     sale_layout_cat_id = fields.Many2one(domain="['|', ('sale_order', '=', order_id), ('sale_order', '=', False)]")
